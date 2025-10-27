@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-booking
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-booking
+  template:
+    metadata:
+      labels:
+        app: ms-booking
+    spec:
+      containers:
+        - name: ms-booking
+          image: docker.io/mmmdliayxan321/ms-booking:latest
+          ports:
+            - containerPort: 8085
+          env:
+            - name: SPRING_RABBITMQ_HOST
+              value: "rabbitmq"
+            - name: SPRING_RABBITMQ_PORT
+              value: "5672"
+            - name: SPRING_RABBITMQ_USERNAME
+              value: "guest"
+            - name: SPRING_RABBITMQ_PASSWORD
+              value: "guest"
+            - name: TWILIO_ACCOUNT_SID
+              valueFrom:
+                secretKeyRef:
+                  name: twilio-secret
+                  key: account-sid
+            - name: TWILIO_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: twilio-secret
+                  key: auth-token
