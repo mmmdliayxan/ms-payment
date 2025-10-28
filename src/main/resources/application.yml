@@ -27,7 +27,7 @@ springdoc:
   api-docs:
     path: /v3/api-docs
   swagger-ui:
-    path: /swagger-ui.html
+    server-url: ${SWAGGER_SERVER_URL:http://localhost:8080}
 
 twilio:
   account-sid: ${TWILIO_ACCOUNT_SID}
