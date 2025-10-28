@@ -29,10 +29,10 @@ spec:
             - name: TWILIO_ACCOUNT_SID
               valueFrom:
                 secretKeyRef:
-                  name: twilio-secret
-                  key: account-sid
+                  name: my-twilio-secret
+                  key: TWILIO_ACCOUNT_SID
             - name: TWILIO_AUTH_TOKEN
               valueFrom:
                 secretKeyRef:
-                  name: twilio-secret
-                  key: auth-token
+                  name: my-twilio-secret
+                  key: TWILIO_AUTH_TOKEN
